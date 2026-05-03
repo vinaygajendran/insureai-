@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Shield -->
+  <path d="M32 4L8 14v18c0 14 10 24 24 28C56 56 56 46 56 32V14L32 4z" fill="#e87c2b" fillOpacity="0.9"/>
+  <path d="M32 12L16 20v12c0 9 6 16 16 19 10-3 16-10 16-19V20L32 12z" fill="#fff" fillOpacity="0.15"/>
+  <!-- AI text mark -->
+  <text x="32" y="38" textAnchor="middle" fontFamily="sans-serif" fontWeight="700" fontSize="16" fill="white">Ai</text>
+</svg>

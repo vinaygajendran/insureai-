@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #1e3a5f;
+  --color-brand-teal: #0d6e6e;
+  --color-brand-saffron: #e87c2b;
+  --color-brand-cream: #fdf8f2;
+  --color-brand-gold: #c9a84c;
+  --font-family-sans: "Noto Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: #fdf8f2;
+  font-family: "Noto Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+}
+
+/* Mobile-first max-width container */
+#root {
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0,0,0,0.12);
+  background-color: #fdf8f2;
+}
+
+/* Safe area bottom padding for native shells */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 12px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c9a84c44; border-radius: 2px; }
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #e8e0d4 25%, #f5efe8 50%, #e8e0d4 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer { animation: none; background: #e8e0d4; }
+  .pulse-dot { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
