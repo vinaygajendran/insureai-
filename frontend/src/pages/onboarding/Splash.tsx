@@ -13,64 +13,68 @@ export default function Splash() {
   }, [hasCompleted, setStep]);
 
   return (
-    <div className="flex flex-col items-center justify-between h-full bg-[#1e3a5f] text-white px-6 py-12 select-none">
-      {/* Top decor */}
-      <div className="w-full flex justify-end opacity-20">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-          <circle cx="60" cy="60" r="60" fill="white" fillOpacity="0.3" />
-          <circle cx="60" cy="60" r="40" fill="white" fillOpacity="0.3" />
-          <circle cx="60" cy="60" r="20" fill="white" fillOpacity="0.5" />
-        </svg>
-      </div>
-
-      {/* Brand */}
-      <div className="flex flex-col items-center gap-5 mt-4">
-        <div className="w-24 h-24 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center shadow-xl">
-          <img src={logoUrl} alt="InsureAi" className="w-14 h-14" />
-        </div>
-        <div className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight">InsureAi</h1>
-          <p className="text-[#e87c2b] font-semibold text-sm mt-1 tracking-wide uppercase">
-            Smart Insurance Agent
-          </p>
-          <p className="text-white/60 text-xs mt-1">Powered by AI India</p>
+    <div className="flex flex-col h-full bg-[#1e3a5f] text-white select-none">
+      {/* Scrollable content — grows to fill space above sticky button */}
+      <div className="flex-1 overflow-y-auto px-6 pt-8 pb-4">
+        {/* Top decor */}
+        <div className="w-full flex justify-end opacity-20 -mt-2 mb-2">
+          <svg width="90" height="90" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="60" fill="white" fillOpacity="0.3" />
+            <circle cx="60" cy="60" r="40" fill="white" fillOpacity="0.3" />
+            <circle cx="60" cy="60" r="20" fill="white" fillOpacity="0.5" />
+          </svg>
         </div>
 
-        {/* Value bullets */}
-        <div className="mt-6 space-y-3 w-full max-w-xs">
-          {[
-            ["🏥", "Know exactly what your policy covers"],
-            ["⏱️", "Track waiting periods with real dates"],
-            ["🤖", "Ask AI — get a straight Yes / No answer"],
-            ["📋", "60-page documents → 2-minute reads"],
-          ].map(([icon, text]) => (
-            <div key={text} className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-3">
-              <span className="text-lg">{icon}</span>
-              <span className="text-sm text-white/90">{text}</span>
+        {/* Brand */}
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-20 h-20 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center shadow-xl">
+            <img src={logoUrl} alt="InsureAi" className="w-12 h-12" />
+          </div>
+          <div className="text-center">
+            <h1 className="text-3xl font-bold tracking-tight">InsureAi</h1>
+            <p className="text-[#e87c2b] font-semibold text-sm mt-1 tracking-wide uppercase">
+              Smart Insurance Agent
+            </p>
+            <p className="text-white/60 text-xs mt-1">Powered by AI India</p>
+          </div>
+
+          {/* Value bullets */}
+          <div className="mt-3 space-y-2.5 w-full max-w-xs">
+            {[
+              ["🏥", "Know exactly what your policy covers"],
+              ["⏱️", "Track waiting periods with real dates"],
+              ["🤖", "Ask AI — get a straight Yes / No answer"],
+              ["📋", "60-page documents → 2-minute reads"],
+            ].map(([icon, text]) => (
+              <div key={text} className="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5">
+                <span className="text-base">{icon}</span>
+                <span className="text-sm text-white/90">{text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats row */}
+          <div className="flex justify-between w-full mt-4 bg-white/5 rounded-2xl p-4 border border-white/10">
+            <div className="text-center">
+              <p className="text-[#e87c2b] text-lg font-bold">3.7%</p>
+              <p className="text-white/50 text-[10px]">India GDP penetration</p>
             </div>
-          ))}
+            <div className="w-px bg-white/20" />
+            <div className="text-center">
+              <p className="text-[#e87c2b] text-lg font-bold">₹26K Cr</p>
+              <p className="text-white/50 text-[10px]">Claims rejected FY24</p>
+            </div>
+            <div className="w-px bg-white/20" />
+            <div className="text-center">
+              <p className="text-[#e87c2b] text-lg font-bold">96 Cr</p>
+              <p className="text-white/50 text-[10px]">Under-insured Indians</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Stats row */}
-      <div className="w-full">
-        <div className="flex justify-between mb-6 bg-white/5 rounded-2xl p-4 border border-white/10">
-          <div className="text-center">
-            <p className="text-[#e87c2b] text-xl font-bold">3.7%</p>
-            <p className="text-white/50 text-xs">India GDP penetration</p>
-          </div>
-          <div className="w-px bg-white/20" />
-          <div className="text-center">
-            <p className="text-[#e87c2b] text-xl font-bold">₹26K Cr</p>
-            <p className="text-white/50 text-xs">Claims rejected FY24</p>
-          </div>
-          <div className="w-px bg-white/20" />
-          <div className="text-center">
-            <p className="text-[#e87c2b] text-xl font-bold">96 Cr</p>
-            <p className="text-white/50 text-xs">Under-insured Indians</p>
-          </div>
-        </div>
-
+      {/* Sticky CTA — always visible at the bottom regardless of screen height */}
+      <div className="px-6 pb-8 pt-3 safe-bottom bg-[#1e3a5f] border-t border-white/10 shadow-[0_-8px_24px_rgba(0,0,0,0.25)]">
         <button
           onClick={() => setStep("phone")}
           className="w-full bg-[#e87c2b] hover:bg-[#d16d1f] active:scale-95 transition-all text-white font-bold py-4 rounded-2xl text-lg shadow-lg"
